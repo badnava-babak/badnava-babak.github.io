@@ -78,6 +78,17 @@ export const projects: Project[] = [
 
 export const experience: WorkExperience[] = [
   {
+    title: 'AI Research Assistant',
+    company: 'Siemens Energy',
+    location: 'Orlando, FL',
+    period: 'Oct 2025 – Present',
+    bullets: [
+      'Developing AI solutions for power grid management, including topology optimization and power redispatch.',
+      'Reduced RL training time to 1/4 of the original by redesigning the training pipeline with multi-processing techniques.',
+      'Set up and managed HPC clusters using SLURM for large-scale distributed training workloads.',
+    ],
+  },
+  {
     title: 'Graduate Research & Teaching Assistant',
     company: 'University of Kansas',
     location: 'Lawrence, KS',
