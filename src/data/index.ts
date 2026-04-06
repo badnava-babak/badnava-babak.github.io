@@ -27,7 +27,7 @@ export interface Publication {
   authors: string
   venue: string
   year: string
-  type: 'journal' | 'conference'
+  type: 'journal' | 'conference' | 'preprint'
   doi?: string
 }
 
@@ -92,7 +92,7 @@ export const experience: WorkExperience[] = [
     title: 'Graduate Research & Teaching Assistant',
     company: 'University of Kansas',
     location: 'Lawrence, KS',
-    period: '2020 – 2024',
+    period: '2020 – 2025',
     bullets: [
       'Developed PPO and PPG algorithms for rate adaptation in 3D video streaming, improving user quality of experience over mmWave networks.',
       'Built DQN, UCB, and contextual UCB algorithms for task offloading in edge computing platforms.',
@@ -124,57 +124,65 @@ export const experience: WorkExperience[] = [
       'Built tools for generating financial and business charts and reports.',
     ],
   },
-  {
-    title: 'Web & Android Developer',
-    company: 'Freelance',
-    location: 'Yazd, Iran',
-    period: '2014 – 2015',
-    bullets: [
-      'Developed WordPress websites, plugins, and an Android application connecting teachers and parents.',
-    ],
-  },
 ]
 
 export const publications: Publication[] = [
-  // Journal
+  // 2025
+  {
+    title: 'ElasticVR: Elastic Task Computing in Multi-User Multi-Connectivity Wireless Virtual Reality (VR) Systems',
+    authors: 'Babak Badnava, Jacob Chakareski, Morteza Hashemi',
+    venue: 'arXiv preprint arXiv:2512.12366',
+    year: '2025',
+    type: 'preprint',
+    doi: 'https://arxiv.org/abs/2512.12366',
+  },
+  {
+    title: 'Learning Driven Elastic Task Multi-Connectivity Immersive Computing Systems',
+    authors: 'Babak Badnava, Jacob Chakareski, Morteza Hashemi',
+    venue: 'arXiv preprint arXiv:2505.13331',
+    year: '2025',
+    type: 'preprint',
+    doi: 'https://arxiv.org/abs/2505.13331',
+  },
   {
     title: 'Neural-Enhanced Rate Adaptation and Computation Distribution for Emerging mmWave Multi-User 3D Video Streaming Systems',
     authors: 'Babak Badnava, Jacob Chakareski, Morteza Hashemi',
-    venue: 'IEEE Transactions on Multimedia',
-    year: 'Under Review',
+    venue: 'IEEE Transactions on Multimedia, vol. 27, pp. 7125–7136',
+    year: '2025',
     type: 'journal',
   },
-  {
-    title: 'Improving Demand-Response Scheme in Smart Grids using Reinforcement Learning',
-    authors: 'Reza Bagherpour, Nasser Mozayani, Babak Badnava',
-    venue: 'International Journal of Energy Research',
-    year: '2021',
-    type: 'journal',
-    doi: 'https://doi.org/10.1002/er.7165',
-  },
-  // Conference
+  // 2024
   {
     title: 'Joint Communication and Computation Resource Allocation for Emerging mmWave Multi-User 3D Video Streaming Systems',
     authors: 'Babak Badnava, Jacob Chakareski, Morteza Hashemi',
-    venue: 'IEEE Global Communications Conference (IEEE GLOBECOM)',
-    year: 'Under Review',
+    venue: 'IEEE Global Communications Conference (GLOBECOM)',
+    year: '2024',
     type: 'conference',
   },
   {
     title: 'Multi-Task Decision-Making for Multi-User 360 Video Processing over Wireless Networks',
     authors: 'Babak Badnava, Jacob Chakareski, Morteza Hashemi',
-    venue: 'IEEE International Conference on Multimedia Information Processing and Retrieval (MIPR)',
+    venue: 'IEEE 7th International Conference on Multimedia Information Processing and Retrieval (MIPR)',
     year: '2024',
     type: 'conference',
   },
+  // 2023
   {
     title: 'Energy-Efficient Deadline-Aware Edge Computing: Bandit Learning with Partial Observations in Multi-Channel Systems',
-    authors: 'Babak Badnava, Keenan Roach, Kenny Cheung, Morteza Hashemi, Ness B Shroff',
-    venue: 'IEEE Global Communications Conference (IEEE GLOBECOM)',
+    authors: 'Babak Badnava, Keenan Roach, Kenny Cheung, Morteza Hashemi, Ness B. Shroff',
+    venue: 'IEEE Global Communications Conference (GLOBECOM)',
     year: '2023',
     type: 'conference',
     doi: 'https://ieeexplore.ieee.org/abstract/document/10437602',
   },
+  {
+    title: 'A New Potential-Based Reward Shaping for Reinforcement Learning Agent',
+    authors: 'Babak Badnava, Mona Esmaeili, Nasser Mozayani, Payman Zarkesh-Ha',
+    venue: 'IEEE 13th Annual Computing and Communication Workshop and Conference (CCWC)',
+    year: '2023',
+    type: 'conference',
+  },
+  // 2022
   {
     title: 'QoE-Centric Multi-User mmWave Scheduling: A Beam Alignment and Buffer Predictive Approach',
     authors: 'Babak Badnava, Sravan Reddy Chintareddy, Morteza Hashemi',
@@ -186,7 +194,7 @@ export const publications: Publication[] = [
   {
     title: 'Deep Reinforcement Learning for Online Latency Aware Workload Offloading in Mobile Edge Computing',
     authors: 'Zeinab Akhavan, Mona Esmaeili, Babak Badnava, Mohammad Yousefi, Xiang Sun, Michael Devetsikiotis, Payman Zarkesh-Ha',
-    venue: 'IEEE Global Communications Conference (IEEE GLOBECOM)',
+    venue: 'IEEE Global Communications Conference (GLOBECOM)',
     year: '2022',
     type: 'conference',
     doi: 'https://doi.org/10.1109/GLOBECOM48099.2022.10001678',
@@ -199,6 +207,7 @@ export const publications: Publication[] = [
     type: 'conference',
     doi: 'https://doi.org/10.23919/ACC53348.2022.9867324',
   },
+  // 2021
   {
     title: 'Spectrum-Aware Mobile Edge Computing for UAVs Using Reinforcement Learning',
     authors: 'Babak Badnava, Taejoon Kim, Kenny Cheung, Zaheer Ali, Morteza Hashemi',
@@ -207,6 +216,15 @@ export const publications: Publication[] = [
     type: 'conference',
     doi: 'https://doi.org/10.1145/3453142.3491414',
   },
+  {
+    title: 'Improving Demand-Response Scheme in Smart Grids using Reinforcement Learning',
+    authors: 'Reza Bagherpour, Nasser Mozayani, Babak Badnava',
+    venue: 'International Journal of Energy Research, vol. 45, no. 15, pp. 21082–21095',
+    year: '2021',
+    type: 'journal',
+    doi: 'https://doi.org/10.1002/er.7165',
+  },
+  // 2020
   {
     title: 'Optimizing Dynamic Pricing Demand Response Algorithm Using Reinforcement Learning in Smart Grid',
     authors: 'Reza Bagherpour, Nasser Mozayani, Babak Badnava',

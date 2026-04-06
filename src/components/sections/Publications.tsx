@@ -1,11 +1,23 @@
 import { publications } from '@/data'
 import type { Publication } from '@/data'
 
+const typeLabel: Record<Publication['type'], string> = {
+  journal: 'Journal',
+  conference: 'Conference',
+  preprint: 'Preprint',
+}
+
+const typeBadgeClass: Record<Publication['type'], string> = {
+  journal: 'bg-blue-50 text-blue-600',
+  conference: 'bg-gray-100 text-gray-600',
+  preprint: 'bg-amber-50 text-amber-600',
+}
+
 function formatAuthors(authors: string): React.ReactNode {
   return authors.split(', ').map((author, i, arr) => (
     <span key={i}>
       {author === 'Babak Badnava' ? (
-        <strong className="text-gray-900 font-semibold">{author}</strong>
+        <strong className="font-semibold text-gray-900">{author}</strong>
       ) : (
         author
       )}
@@ -16,8 +28,12 @@ function formatAuthors(authors: string): React.ReactNode {
 
 function PublicationItem({ pub }: { pub: Publication }) {
   return (
-    <li className="flex items-start gap-3">
-      <span className="text-accent mt-1 shrink-0 text-xs">·</span>
+    <li className="flex items-start gap-4 py-4 border-b border-gray-100 last:border-0">
+      <span
+        className={`mt-0.5 shrink-0 text-xs font-medium px-2 py-0.5 rounded-full ${typeBadgeClass[pub.type]}`}
+      >
+        {typeLabel[pub.type]}
+      </span>
       <div>
         {pub.doi ? (
           <a
@@ -38,56 +54,13 @@ function PublicationItem({ pub }: { pub: Publication }) {
   )
 }
 
-function PublicationGroup({
-  title,
-  pubs,
-}: {
-  title: string
-  pubs: Publication[]
-}) {
-  const underReview = pubs.filter(p => p.year === 'Under Review')
-  const byYear = pubs
-    .filter(p => p.year !== 'Under Review')
-    .reduce<Record<string, Publication[]>>((acc, p) => {
-      acc[p.year] = acc[p.year] ? [...acc[p.year], p] : [p]
-      return acc
-    }, {})
-  const years = Object.keys(byYear).sort((a, b) => Number(b) - Number(a))
-
-  return (
-    <div>
-      <h3 className="text-base font-semibold text-gray-900 mb-6">{title}</h3>
-      {underReview.length > 0 && (
-        <div className="mb-6">
-          <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-3">
-            Under Review
-          </p>
-          <ul className="space-y-4">
-            {underReview.map((p, i) => (
-              <PublicationItem key={i} pub={p} />
-            ))}
-          </ul>
-        </div>
-      )}
-      {years.map(year => (
-        <div key={year} className="mb-6">
-          <p className="text-xs font-medium text-gray-400 uppercase tracking-widest mb-3">
-            {year}
-          </p>
-          <ul className="space-y-4">
-            {byYear[year].map((p, i) => (
-              <PublicationItem key={i} pub={p} />
-            ))}
-          </ul>
-        </div>
-      ))}
-    </div>
-  )
-}
-
 export default function Publications() {
-  const journals = publications.filter(p => p.type === 'journal')
-  const conferences = publications.filter(p => p.type === 'conference')
+  // Group by year, sorted descending
+  const byYear = publications.reduce<Record<string, Publication[]>>((acc, p) => {
+    acc[p.year] = acc[p.year] ? [...acc[p.year], p] : [p]
+    return acc
+  }, {})
+  const years = Object.keys(byYear).sort((a, b) => Number(b) - Number(a))
 
   return (
     <section id="publications" className="py-24 bg-gray-50">
@@ -109,9 +82,19 @@ export default function Publications() {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <PublicationGroup title="Journal Publications" pubs={journals} />
-          <PublicationGroup title="Conference Publications" pubs={conferences} />
+        <div className="space-y-10">
+          {years.map(year => (
+            <div key={year}>
+              <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-widest mb-2">
+                {year}
+              </h3>
+              <ul className="divide-y divide-gray-100 bg-white rounded-xl border border-gray-100 px-6">
+                {byYear[year].map((pub, i) => (
+                  <PublicationItem key={i} pub={pub} />
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
       </div>
     </section>
